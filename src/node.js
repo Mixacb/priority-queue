@@ -43,24 +43,34 @@ class Node {
 	}
 
 	swapWithParent() {
-		if(this.parent!==null){
+		if(this.parent){
+			
+				
 			
 			
-			/*if(this.parent.parent.left===this.parent){
-				this.parent.parent.left=this;
+			var granny=this.parent.parent;
+			/*if(granny.left||granny.right){
+			if(granny.left===dad){
+				granny.left=this;
 			}
-			if(this.parent.parent.right===this.parent){
-				this.parent.parent.right=this;
+			if(granny.right===dad){
+				granny.right=this;
+			}
 			}*/
-		if(this.parent.right===this){
-			this.parent.left.parent=this;
+			var dad=this.parent;
+			dad.parent=this;
+			this.parent=granny;
+			if(dad.left&&dad.right){
+				if(dad.right===this){
+					var brother=dad.left;
+					}
+			if(dad.left===this){
+				var brother=dad.right;
+				}
+			brother.parent=this;
 			}
-			if(this.parent.left===this){
-			this.parent.right.parent=this;
-			}
-			var buffer=this.parent.parent;
-			this.parent.parent=this;
-			this.parent=buffer;
+			
+			
 			
 		}
 	}
