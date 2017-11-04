@@ -44,34 +44,40 @@ class Node {
 
 	swapWithParent() {
 		if(this.parent){
-			
-				
-			
-			
-			var granny=this.parent.parent;
-			/*if(granny.left||granny.right){
-			if(granny.left===dad){
-				granny.left=this;
-			}
-			if(granny.right===dad){
-				granny.right=this;
-			}
-			}*/
-			var dad=this.parent;
+	
+			const granny=this.parent.parent;
+			const dad=this.parent;
 			dad.parent=this;
-			this.parent=granny;
+			this.parent=granny;	
 			if(dad.left&&dad.right){
 				if(dad.right===this){
 					var brother=dad.left;
 					}
 			if(dad.left===this){
-				var brother=dad.right;
+				brother=dad.right;
 				}
 			brother.parent=this;
 			}
-			
-			
-			
+			const l=this.left;
+			const r=this.right;
+			if(dad.left===this){
+			this.right=dad.right;
+			this.left=dad;
+			}
+			if(dad.right===this){
+			this.left=dad.left;
+			this.right=dad;
+			}
+			dad.left=l;
+			dad.right=r;
+			if(granny&&(granny.left||granny.right)){
+			if(granny.right===dad){
+			granny.right=this;
+			}
+			if(granny.left===dad){
+			granny.left=this;
+			}
+			}
 		}
 	}
 }
