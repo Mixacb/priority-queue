@@ -78,7 +78,9 @@ class Node {
 			granny.left=this;
 			}
 			}
+			
 		}
+		
 	}
 }
 
