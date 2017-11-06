@@ -15,7 +15,7 @@ class PriorityQueue {
 		
 		if(this.size()===this.maxSize)
 		{
-			throw new Error();//('Queue has max size.');
+			throw new Error('Queue has max size.');//();
 		}
 		else{
 			this.heap.push(data, priority);}
@@ -31,15 +31,14 @@ class PriorityQueue {
 	}
 
 	size() {
-		//if(this.isEmpty())
-		//{return 0;}
+
 	return this.heap.size();
 	}
 
 	isEmpty() {
 		
 		return this.size()===0;
-		//return this.heap.isEmpty();
+		
 	}
 }
 

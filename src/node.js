@@ -8,12 +8,14 @@ class Node {
 	}
 
 	appendChild(node) {
-		if(!(this.left!==null&&this.right!==null)){
-		if(this.left!==null){
+		if(!(this.left&&this.right)){
+		if(this.left){
 		this.right=node;
+		//this.right.parent = this;
 		}
 		else{
 		this.left=node;
+		//this.left.parent = this;
 		}
 		node.parent=this;
 		}
@@ -27,16 +29,16 @@ class Node {
 		}
 		node.parent=null;
 		if(this.left===node)
-		this.left=null;
+		{this.left=null;}
 		if(this.right===node)
-		this.right=null;
+		{this.right=null;}
 		
 		
 
 	}
 
 	remove() {
-		if(this.parent!==null){
+		if(this.parent){
 			this.parent.removeChild(this);
 		}
 
@@ -44,19 +46,21 @@ class Node {
 
 	swapWithParent() {
 		if(this.parent){
-	
+			//var brother;
 			const granny=this.parent.parent;
 			const dad=this.parent;
 			dad.parent=this;
 			this.parent=granny;	
 			if(dad.left&&dad.right){
 				if(dad.right===this){
-					var brother=dad.left;
+					dad.left.parent=this;
+					//brother=dad.left;
 					}
 			if(dad.left===this){
-				brother=dad.right;
+				dad.right.parent=this;//brother=dad.right;
 				}
-			brother.parent=this;
+			
+			//brother.parent=this;
 			}
 			const l=this.left;
 			const r=this.right;
@@ -70,7 +74,7 @@ class Node {
 			}
 			dad.left=l;
 			dad.right=r;
-			if(granny&&(granny.left||granny.right)){
+			if(granny){//(&&granny.left||granny.right)
 			if(granny.right===dad){
 			granny.right=this;
 			}
